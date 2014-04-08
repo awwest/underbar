@@ -325,11 +325,11 @@ var _ = { };
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
     var argsArr = [];
-    thisArg = this;
+    
     for (var i=2; i<arguments.length;i++){
       argsArr[i-2]=arguments[i];
     }
-    window.setTimeout(func.apply(thisArg, argsArr), wait);
+    window.setTimeout(function(){func.apply(null, argsArr)}, wait);
   };
 
 
